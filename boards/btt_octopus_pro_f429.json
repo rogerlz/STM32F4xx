@@ -1,0 +1,33 @@
+{
+  "build": {
+    "core": "stm32",
+    "cpu": "cortex-m4",
+    "extra_flags": "-DSTM32F429xx",
+    "f_cpu": "168000000L",
+    "mcu": "stm32f429zit6",
+    "variant": "STM32F429ZI",
+    "product_line": "STM32F429xx"
+  },
+  "debug": {
+    "jlink_device": "STM32F429ZI",
+    "openocd_target": "stm32f4x",
+    "svd_path": "STM32F429x.svd"
+  },
+  "frameworks": [
+    "stm32cube"
+  ],
+  "name": "BTT Octopus Pro F429",
+  "upload": {
+    "maximum_ram_size": 262144,
+    "maximum_size": 2097152,
+    "protocol": "stlink",
+    "protocols": [
+      "jlink",
+      "stlink",
+      "blackmagic",
+      "mbed"
+    ]
+  },
+  "url": "https://github.com/bigtreetech/BIGTREETECH-OCTOPUS-Pro",
+  "vendor": "BIGTREETECH"
+}

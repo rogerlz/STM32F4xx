@@ -36,6 +36,7 @@
 //#define BOARD_BTT_SKR_PRO_1_2     // F407 based 3D Printer board
 //#define BOARD_BTT_SKR_20          // F407 based 3D Printer board
 //#define BOARD_BTT_SKR_20_DAC      // F407 based 3D Printer board, uses analog output (DAC) for spindle speed control
+#define BOARD_BTT_OCTOPUS_PRO_F429
 //#define BOARD_FYSETC_S6           // F446 based 3D Printer board
 //#define BOARD_FLEXI_HAL           // F446 CNC board
 //#define BOARD_LONGBOARD32         // F412 Sienci SLB
@@ -64,6 +65,7 @@
 #define USB_SERIAL_CDC         1 // Serial communication via native USB.
 #endif
 //#define BLUETOOTH_ENABLE     2 // Set to 2 for HC-05 module. Requires and claims one auxillary input pin.
+
 // Spindle selection:
 // Up to four specific spindle drivers can be instantiated at a time
 // depending on N_SPINDLE and N_SYS_SPINDLE definitions in grbl/config.h.
@@ -75,6 +77,10 @@
 //#define SPINDLE2_ENABLE      SPINDLE_NONE
 //#define SPINDLE3_ENABLE      SPINDLE_NONE
 //#define SPINDLE_OFFSET       1 // Uncomment to enable settings for laser spindle XY-offset.
+
+ //#define SD_CS_PORT             GPIOA
+ //#define SD_CS_PIN              4
+
 // **********************
 //#define MODBUS_ENABLE        1 // Set to 1 for auto direction, 2 for direction signal on auxillary output pin.
 //#define _WIZCHIP_         5500 // Enables ethernet via WIZnet breakout connected via SPI. Set to 5500 for W5500 chip, 5105 for W5100S.
@@ -97,10 +103,10 @@
 //#define PPI_ENABLE           1 // Laser PPI plugin. To be completed.
 //#define LASER_COOLANT_ENABLE 1 // Laser coolant plugin. To be completed.
 //#define TRINAMIC_ENABLE   2130 // Trinamic TMC2130 stepper driver support.
-//#define TRINAMIC_ENABLE   5160 // Trinamic TMC5160 stepper driver support.
+//#define TRINAMIC_ENABLE   5160   // Trinamic TMC5160 stepper driver support.
 //#define TRINAMIC_ENABLE   2209 // Trinamic TMC2209 stepper driver support.
 //#define TRINAMIC_ENABLE   2660 // Trinamic TMC2660 stepper driver support.
-//#define TRINAMIC_R_SENSE   110 // R sense resistance in milliohms, 2130 and 2209 default is 110, 5160 is 75.
+#define TRINAMIC_R_SENSE   22    // R sense resistance in milliohms, 2130 and 2209 default is 110, 5160 is 75.
 //#define TRINAMIC_I2C         1 // Trinamic I2C - SPI bridge interface.
 //#define TRINAMIC_DEV         1 // Development mode, adds a few M-codes to aid debugging. Do not enable in production code.
 //#define FANS_ENABLE          1 // Enable fan control via M106/M107. Enables fans plugin.

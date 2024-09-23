@@ -304,6 +304,28 @@
       }
     },
     {
+      "name": "BTT Octopus Pro F429",
+      "symbol": "BOARD_BTT_OCTOPUS_PRO_F429",
+      "URL": "https://github.com/bigtreetech/BIGTREETECH-OCTOPUS-Pro",
+      "MAP": "boards/btt_octopus_pro_f429_map.h",
+      "caps": {
+        "axes": 8,
+        "auto_square": 0,
+        "safety_door": 0,
+        "eeprom": 16,
+        "fram": 0,
+        "sdcard": 1,
+        "rgb_out": 1,
+        "trinamic_uart_n": 1,
+        "pio_board": "btt_octopus_pro_f429",
+        "ldscript": "STM32F429VGTX_FLASH.ld"
+      },
+      "symbols": {
+          "STM32F429xx": "",
+          "HSE_VALUE": 12000000
+      }
+    },
+    {
       "name": "Fysetc S6 V2.0",
       "notes": "This board comes with different EEPROM sizes, select the matching one in the Plugins tab.",
       "symbol": "BOARD_FYSETC_S6",
@@ -498,7 +520,7 @@
         "usb_cdc": 0,
         "safety_door": 0,
         "pio_board": "nucleo_f411re",
-        "ldscript": "STM32F411CEUX_FLASH.ld"    
+        "ldscript": "STM32F411CEUX_FLASH.ld"
       },
       "symbols": {
           "STM32F411xE": "",
@@ -515,7 +537,7 @@
         "usb_cdc": 0,
         "safety_door": 0,
         "pio_board": "nucleo_f446re",
-        "ldscript": "STM32F446RETX_FLASH.ld"    
+        "ldscript": "STM32F446RETX_FLASH.ld"
       },
       "symbols": {
           "STM32F446xx": "",

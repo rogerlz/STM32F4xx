@@ -21,7 +21,7 @@
 
 #include "driver.h"
 
-#if TRINAMIC_SPI_ENABLE && defined(TRINAMIC_SPI_PORT) // && (defined(BOARD_FYSETC_S6) || defined(BOARD_BTT_SKR_PRO_1_1) || defined(BOARD_BTT_SKR_PRO_1_2) || defined(BOARD_MKS_ROBIN_NANO_30) || defined(BOARD_MORPHO_CNC))
+#if TRINAMIC_SPI_ENABLE && defined(TRINAMIC_SPI_PORT)
 
 #include "trinamic/common.h"
 
@@ -201,7 +201,53 @@ static void if_init (uint8_t motors, axes_signals_t enabled)
 
         init_ok = true;
 
-#if TRINAMIC_SPI_PORT == 2
+#if TRINAMIC_SPI_PORT == 1
+
+        __HAL_RCC_SPI1_CLK_ENABLE();
+
+        GPIO_InitTypeDef GPIO_InitStruct = {
+            .Pin = GPIO_PIN_6|GPIO_PIN_7,
+            .Mode = GPIO_MODE_AF_PP,
+            .Pull = GPIO_NOPULL,
+            .Speed = GPIO_SPEED_FREQ_VERY_HIGH,
+            .Alternate = GPIO_AF5_SPI1
+        };
+        HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+        GPIO_InitTypeDef GPIO_InitStruct2 = {
+            .Pin = GPIO_PIN_5,
+            .Mode = GPIO_MODE_AF_PP,
+            .Pull = GPIO_NOPULL,
+            .Speed = GPIO_SPEED_FREQ_VERY_HIGH,
+            .Alternate = GPIO_AF5_SPI1
+        };
+        HAL_GPIO_Init(GPIOA, &GPIO_InitStruct2);
+
+        static const periph_pin_t sck = {
+            .function = Output_SCK,
+            .group = PinGroup_SPI,
+            .port = GPIOA,
+            .pin = 5,
+            .mode = { .mask = PINMODE_OUTPUT }
+        };
+
+        static const periph_pin_t sdo = {
+            .function = Output_MOSI,
+            .group = PinGroup_SPI,
+            .port = GPIOA,
+            .pin = 7,
+            .mode = { .mask = PINMODE_NONE }
+        };
+
+        static const periph_pin_t sdi = {
+            .function = Input_MISO,
+            .group = PinGroup_SPI,
+            .port = GPIOA,
+            .pin = 6,
+            .mode = { .mask = PINMODE_NONE }
+        };
+
+#elif TRINAMIC_SPI_PORT == 2
 
         __HAL_RCC_SPI2_CLK_ENABLE();
 
