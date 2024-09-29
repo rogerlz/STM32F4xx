@@ -386,4 +386,14 @@ void tmc_spi_init (void)
     trinamic_if_init(&driver_if);
 }
 
+// TODO why do I need this here
+#if defined(BOARD_BTT_OCTOPUS_PRO_F429)
+
+void board_init (void)
+{
+    tmc_spi_init();
+}
+
+#endif
+
 #endif // TRINAMIC_SPI_ENABLE

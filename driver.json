@@ -310,9 +310,10 @@
       "MAP": "boards/btt_octopus_pro_f429_map.h",
       "caps": {
         "axes": 8,
+        "serial_ports": 2,
         "auto_square": 0,
         "safety_door": 0,
-        "eeprom": 16,
+        "eeprom": 256,
         "fram": 0,
         "sdcard": 1,
         "rgb_out": 1,

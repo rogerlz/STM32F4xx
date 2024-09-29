@@ -28,16 +28,17 @@
 #define BOARD_NAME "BTT Octopus Pro F429"
 #define BOARD_URL "https://github.com/bigtreetech/BIGTREETECH-OCTOPUS-Pro"
 
-#undef I2C_ENABLE
-#undef EEPROM_ENABLE
+//#define EEPROM_ENABLE   256 /// 32K AT24C32
 
 #define SERIAL_PORT     1   // GPIOA: TX = 9, RX = 10
-#define I2C_ENABLE      1
+#define SERIAL1_PORT   21   // GPIOD: TX = 5, RX = 6
+#define SERIAL2_PORT   32   // GPIOD: TX = 8, RX = 9
+//#define I2C_ENABLE      1
 #define I2C_PORT        1   // GPIOB: SCL = 8, SDA = 9
 
-//#ifndef WEB_BUILD
-//#define EEPROM_ENABLE   16  // 2K single byte addressing
-//#endif
+#if MODBUS_ENABLE
+#define MODBUS_RTU_STREAM       0
+#endif
 
 #if TRINAMIC_ENABLE
 #define HAS_BOARD_INIT
@@ -45,13 +46,13 @@
 
 #if SDCARD_ENABLE
 /*
-SDIO_D2:    C10
-SDIO_D3:    C11
-SDIO_CMD:   D2
-SDIO_CK:    C12
 SDIO_D0:    C8
 SDIO_D1:    C9
+SDIO_D2:    C10
+SDIO_D3:    C11
+SDIO_CK:    C12
 TF_DET:     C14
+SDIO_CMD:   D2
 */
 #define SDCARD_SDIO                 1
 #endif
@@ -185,8 +186,10 @@ TF_DET:     C14
 // Define user-control controls (cycle start, reset, feed hold) input pins.
 #define RESET_PORT                  GPIOG
 #define RESET_PIN                   11                          // STOP 3
+
 #define FEED_HOLD_PORT              GPIOG
 #define FEED_HOLD_PIN               12                          // STOP 4
+
 #define CYCLE_START_PORT            GPIOG
 #define CYCLE_START_PIN             13                          // STOP 5
 #define CONTROL_INMODE GPIO_BITBAND
@@ -202,13 +205,18 @@ TF_DET:     C14
 #define LED_PORT                  GPIOB
 #define LED_PIN                   0
 
+//#if SAFETY_DOOR_ENABLE
+//#define SAFETY_DOOR_PORT            AUXINPUT0_PORT
+//#define SAFETY_DOOR_PIN             AUXINPUT0_PIN
+//#endif
+
 #if TRINAMIC_UART_ENABLE
 
 #undef TRINAMIC_UART_ENABLE
 #define TRINAMIC_UART_ENABLE        2
 
 #define MOTOR_UARTX_PORT            GPIOC
-#define MOTOR_UARTX_PIN             14
+#define MOTOR_UARTX_PIN             4
 #define MOTOR_UARTY_PORT            GPIOD
 #define MOTOR_UARTY_PIN             11
 #define MOTOR_UARTZ_PORT            GPIOC
@@ -246,11 +254,11 @@ TF_DET:     C14
 #define TRINAMIC_SPI_PORT           1 // GPIOA, SCK_PIN = 5, MISO_PIN = 6, MOSI_PIN = 7
 
 #define MOTOR_CSX_PORT              GPIOC
-#define MOTOR_CSX_PIN               14
+#define MOTOR_CSX_PIN               4
 #define MOTOR_CSY_PORT              GPIOD
 #define MOTOR_CSY_PIN               11
 #define MOTOR_CSZ_PORT              GPIOC
-#define MOTOR_CSZ_PIN               7
+#define MOTOR_CSZ_PIN               6
 
 #ifdef  M3_AVAILABLE
 #define MOTOR_CSM3_PORT             GPIOC
